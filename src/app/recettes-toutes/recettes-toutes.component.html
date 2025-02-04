@@ -12,7 +12,7 @@
 
   <div class="recipe-list">
     <div class="recipe-card" *ngFor="let recipe of recipes">
-      <h2>{{ recipe.name }}</h2>
+      <h2><a [routerLink]="['/recettes-detail', recipe.id]">{{ recipe.name }}</a></h2>
       <p><strong>Ingrédients:</strong> {{ recipe.ingredients.join(', ') }}</p>
       <p><strong>Temps:</strong> {{ recipe.time }} min</p>
       <p><strong>Difficulté:</strong> {{ recipe.difficulty }} / 5</p>

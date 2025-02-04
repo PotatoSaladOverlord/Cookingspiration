@@ -25,23 +25,6 @@ input {
   gap: 15px; /* Adds spacing between buttons */
 }
 
-button {
-  background-color: #F4A259; /* Golden Honey */
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-  width: 200px;
-}
-
-button:hover {
-  background-color: #d68a3c;
-}
-
 h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;

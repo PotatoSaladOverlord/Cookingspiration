@@ -4,12 +4,8 @@
       type="text"
       [(ngModel)]="searchQuery"
       (input)="searchRecipes()"
-      placeholder="Beuf, Saumon, Poireau, Poulet,..."
+      placeholder="Boeuf, Canard, Poireau, Pommes de terre,..."
     />
-    <div class="button-container">
-      <button (click)="recettesToutes()">Toutes les recettes</button>
-      <button (click)="recettesRandom()">Recette random</button>
-    </div>
   </div>
 
   <ul *ngIf="filteredRecipes.length > 0">

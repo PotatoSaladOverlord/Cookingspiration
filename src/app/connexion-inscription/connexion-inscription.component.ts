@@ -38,15 +38,35 @@ export class ConnexionInscriptionComponent {
     this.signupError = ''; // Clear signup error message on form switch
   }
 
-  // Handle login logic
   login() {
     if (!this.username || !this.password) {
       this.loginError = "Tous les champs sont requis.";
       return;
-
-      localStorage.setItem('username', this.username);
-      if (localStorage.getItem('username') === this.username) {};
     }
+
+
+    // Call getUsers() to fetch all users
+    this.service.getUsers().subscribe(
+      (users) => {
+        // Find the user in the list
+        const user = users.find((u: { username: string; email: string; }) => u.username === this.username || u.email === this.username);
+
+        if (!user) {
+          // User not found
+          this.loginError = "Cet utilisateur n'existe pas, veuillez vous inscrire";
+        } else if (user.password !== this.password) {
+          // Incorrect password
+          this.loginError = "Le mot de passe est incorrect.";
+        } else {
+          // All good, navigate to all recipes
+          this.router.navigate(['/recettes-toutes']);
+        }
+      },
+      (error) => {
+        // Handle any error during the users fetching process
+        this.loginError = "Erreur de connexion.";
+      }
+    );
 
     this.service.checkUserLogin(this.username, this.password).subscribe(
       (response: any) => {

@@ -7,6 +7,7 @@ import {map, Observable} from 'rxjs';
 })
 export class ServiceCoursService {
   public variableDuService: string = 'Je suis la variable du service'
+  private apiUrl = '/api'; // URL correspondant aux routes Mirage.js
   private apiUrlUsers = '/api/users'; // URL correspondant aux routes Mirage.js
   private apiUrlRecipes = '/api/recipes'; // URL correspondant aux routes Mirage.js
 
@@ -32,12 +33,20 @@ export class ServiceCoursService {
 
   // Check user login (pseudo or email, password)
   checkUserLogin(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrlUsers}/login`, { username, password });
+    return this.http.post<any>(`${this.apiUrl}/users/login`, { username, password });
   }
 
   // Register new user
   registerUser(user: { username: string, email: string, password: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrlUsers}/register`, user);
   }
+
+  public getRecipeById(id: string): Observable<any> {
+    return this.http.get<{ recipe: any }>(`/api/recipes/${id}`).pipe(
+      map(response => response.recipe)
+    );
+  }
+
+
 
 }
