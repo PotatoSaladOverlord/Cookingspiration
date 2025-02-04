@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (input)="searchRecipes()"
+      placeholder="Beuf, Saumon, Poireau, Poulet,..."
+    />
+    <div class="button-container">
+      <button (click)="recettesToutes()">Toutes les recettes</button>
+      <button (click)="recettesRandom()">Recette random</button>
+    </div>
+  </div>
+
+  <ul *ngIf="filteredRecipes.length > 0">
+    <div class="recipe-list">
+      <div class="recipe-card" *ngFor="let recipe of filteredRecipes">
+        <h2>{{ recipe.name }}</h2>
+        <p><strong>Ingrédients:</strong> {{ recipe.ingredients.join(', ') }}</p>
+        <p><strong>Temps:</strong> {{ recipe.time }} min</p>
+        <p><strong>Difficulté:</strong> {{ recipe.difficulty }} / 5</p>
+        <p><strong>Prix:</strong> {{ recipe.price }} / 3</p>
+      </div>
+    </div>
+  </ul>
+
+  <p *ngIf="filteredRecipes.length === 0" class="no-recipes">
+    Aucune recette trouvée, essayez un autre ingrédient.
+  </p>
+
+</div>

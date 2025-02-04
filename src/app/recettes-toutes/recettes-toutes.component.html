@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Toutes les recettes</h1>
+  <p>
+    Vous trouverez ici nos grands classiques de la gastronomie, pour des dîners inspirés !
+    </p>
+  <p>
+    Vous pouvez aussi chercher nos recettes par
+    <a routerLink="/recettes-par-nom" class="subnav-link">nom</a>,
+    <a routerLink="/recettes-par-ingredient">ingrédient</a>,
+    ou essayer une <a routerLink="/recettes-random">recette aléatoire</a>.
+  </p>
+
+  <div class="recipe-list">
+    <div class="recipe-card" *ngFor="let recipe of recipes">
+      <h2>{{ recipe.name }}</h2>
+      <p><strong>Ingrédients:</strong> {{ recipe.ingredients.join(', ') }}</p>
+      <p><strong>Temps:</strong> {{ recipe.time }} min</p>
+      <p><strong>Difficulté:</strong> {{ recipe.difficulty }} / 5</p>
+      <p><strong>Prix:</strong> {{ recipe.price }} / 3</p>
+    </div>
+  </div>
+</div>

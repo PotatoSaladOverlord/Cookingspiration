@@ -1,0 +1,70 @@
+/* General Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between; /* Space out logo, title, and profile section */
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #FAF3E0; /* Soft Cream */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+h1 {
+  font-size: 4rem;
+  color: #722F37;
+}
+
+/* Logo */
+.logo img {
+  width: 100px; /* Adjust as needed */
+  height: auto;
+}
+
+/* Profile Section */
+.connection-inscription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.connection-inscription img {
+  margin-bottom: 5px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #722F37; /* Deep Plum */
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #F4A259; /* Sage Green */
+}
+
+/* Sub-navigation Section */
+.subnav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background-color: #722F37; /* Deep Plum */
+  padding: 15px 0;
+}
+
+.subnav-link {
+  color: #FAF3E0; /* Soft Cream */
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.subnav-link:hover {
+  color: #F4A259; /* Golden Honey */
+}
+
+.active-link {
+  color: #F4A259; /* Golden Honey */
+}
