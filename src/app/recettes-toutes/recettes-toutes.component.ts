@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceCoursService } from '../service/service-cours.service';
+import { ServiceRecettesService } from '../service/service-recettes.service';
 import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
@@ -14,11 +14,11 @@ import {RouterLink} from "@angular/router";
   styleUrl: './recettes-toutes.component.scss'
 })
 export class RecettesToutesComponent implements OnInit {
-  public recipes: any[] = [];
+  protected recipes: any[] = [];
 
-  constructor(private service: ServiceCoursService) {}
+  public constructor(private service: ServiceRecettesService) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.service.getRecipes().subscribe( (data) => {
       this.recipes = data;
     })

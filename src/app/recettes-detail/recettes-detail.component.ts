@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ServiceCoursService} from "../service/service-cours.service";
+import {ServiceRecettesService} from "../service/service-recettes.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgIf} from "@angular/common";
 
@@ -14,15 +14,15 @@ import {NgIf} from "@angular/common";
 })
 export class RecettesDetailComponent implements OnInit{
 
-  public recipe: any;
+  protected recipe: any;
 
   constructor(
     private route: ActivatedRoute,
-    private service: ServiceCoursService,
+    private service: ServiceRecettesService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     const recipeId = this.route.snapshot.paramMap.get('id');
     if (recipeId) {
       this.service.getRecipeById(recipeId).subscribe((data: any) => {

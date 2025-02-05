@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ServiceCoursService } from '../service/service-cours.service';
+import { ServiceRecettesService } from '../service/service-recettes.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
@@ -16,32 +16,34 @@ import {NgForOf, NgIf} from '@angular/common';
   styleUrl: './recettes-new.component.scss'
 })
 export class RecettesNewComponent {
-  public name: string = '';
-  public ingredients: string[] = [];
-  public newIngredient: string = '';
-  public difficulty: number = 1;
-  public price: number = 1;
-  public time: string = '';
-  public text: string = '';
-  public isLoggedIn: boolean = false;
 
+  protected isLoggedIn: boolean = false; // sert à savoir si oui ou non l'utilisateur à accès à la fonctionalité
+  // liste de caractéristiques d'une recette
+  protected name: string = '';
+  protected ingredients: string[] = [];
+  protected newIngredient: string = '';
+  protected difficulty: number = 1;
+  protected price: number = 1;
+  protected time: string = '';
+  protected text: string = '';
 
-  constructor(private service: ServiceCoursService, protected router: Router) {
+  public constructor(private service: ServiceRecettesService, protected router: Router) {
     const storedUser = localStorage.getItem('userName');
     this.isLoggedIn = !!storedUser; // Vérifie si un utilisateur est connecté
   }
-  addIngredient() {
+
+  protected addIngredient() {
     if (this.newIngredient.trim() !== '') {
       this.ingredients.push(this.newIngredient.trim());
       this.newIngredient = ''; // Réinitialiser l'input après ajout
     }
   }
 
-  removeIngredient(index: number) {
+  protected removeIngredient(index: number) {
     this.ingredients.splice(index, 1);
   }
 
-  submitRecipe() {
+  protected submitRecipe() {
     const newRecipe = {
       name: this.name,
       ingredients: this.ingredients,

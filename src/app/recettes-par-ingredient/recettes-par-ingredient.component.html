@@ -1,4 +1,6 @@
 <div class="container">
+
+  <!-- Barre de recherche -->
   <div class="search-container">
     <input
       type="text"
@@ -8,18 +10,20 @@
     />
   </div>
 
+  <!-- Liste de recettes filtrées sans les étapes-->
   <ul *ngIf="filteredRecipes.length > 0">
     <div class="recipe-list">
       <div class="recipe-card" *ngFor="let recipe of filteredRecipes">
         <h2><a [routerLink]="['/recettes-detail', recipe.id]">{{ recipe.name }}</a></h2>
         <p><strong>Ingrédients:</strong> {{ recipe.ingredients.join(', ') }}</p>
-        <p><strong>Temps:</strong> {{ recipe.time }} min</p>
+        <p><strong>Temps:</strong> {{ recipe.time }} </p>
         <p><strong>Difficulté:</strong> {{ recipe.difficulty }} / 5</p>
         <p><strong>Prix:</strong> {{ recipe.price }} / 3</p>
       </div>
     </div>
   </ul>
 
+  <!-- Si aucune recette -->
   <p *ngIf="filteredRecipes.length === 0" class="no-recipes">
     Aucune recette trouvée, essayez un autre ingrédient.
   </p>

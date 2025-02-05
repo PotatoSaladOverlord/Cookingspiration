@@ -18,16 +18,16 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  userName: any = null;
+  protected userName: any = null;
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     const storedUserName = localStorage.getItem('userName');
     this.userName = storedUserName ? storedUserName.replace(/^"|"$/g, '') : null
   }
 
-  logout() {
+  protected logout() {
     localStorage.removeItem('userName'); // Remove user from storage
     this.userName = null; // Update UI
     this.router.navigate(['/']); // Redirect to home

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {ServiceCoursService} from "../service/service-cours.service";
+import { Component, OnInit} from '@angular/core';
+import {ServiceRecettesService} from "../service/service-recettes.service";
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -13,19 +13,18 @@ import {NgIf} from "@angular/common";
 })
 export class RecettesRandomComponent {
   private recipes: any[] = [];
-  public randomRecipe: any = null;
+  protected randomRecipe: any = null;
 
-  constructor(private service: ServiceCoursService) {
-  }
+  public constructor(private service: ServiceRecettesService) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.service.getRecipes().subscribe( (data) => {
       this.recipes = data;
       this.getRandomRecipe();
     });
   }
 
-  getRandomRecipe() {
+  protected getRandomRecipe() {
     if (this.recipes.length > 0) {
       const randomIndex = Math.floor(Math.random() * this.recipes.length);
       this.randomRecipe = this.recipes[randomIndex];

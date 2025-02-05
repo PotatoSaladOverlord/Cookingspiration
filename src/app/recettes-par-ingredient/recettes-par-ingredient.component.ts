@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceCoursService } from '../service/service-cours.service';
+import { ServiceRecettesService } from '../service/service-recettes.service';
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import {Router, RouterLink} from '@angular/router';
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -12,42 +12,33 @@ import {Router, RouterLink} from '@angular/router';
     FormsModule,
     NgForOf,
     NgIf,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './recettes-par-ingredient.component.html',
   styleUrl: './recettes-par-ingredient.component.scss'
 })
 
 export class RecettesParIngredientComponent implements OnInit {
-  public searchQuery: string = '';
+  protected searchQuery: string = '';
   private recipes: any[] = [];
-  public filteredRecipes: any[] = [];
-  public valeurService:string = '';
+  protected filteredRecipes: any[] = [];
 
-  constructor(private service: ServiceCoursService, private router: Router) {}
+  public constructor(private service: ServiceRecettesService) {}
 
-
-  ngOnInit() {
-    this.valeurService = this.service.variableDuService;
+  // charge toutes les recettes au départ et les met dans filteredRecipes
+  public ngOnInit() {
     this.service.getRecipes().subscribe((data) => {
       this.recipes = data;
       this.filteredRecipes = this.recipes;
     })
   }
 
-  searchRecipes() {
+  // change les recettes filtrées
+  protected searchRecipes() {
     this.filteredRecipes = this.recipes.filter(recipe =>
       recipe.ingredients.some((ingredient: string) =>
         ingredient.toLowerCase().includes(this.searchQuery.toLowerCase())
       )
     );
-  }
-
-  recettesRandom() {
-    this.router.navigate(['/recettes-random']);
-  }
-
-  recettesToutes() {
-    this.router.navigate(['/recettes-toutes']);
   }
 }

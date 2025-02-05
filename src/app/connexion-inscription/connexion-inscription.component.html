@@ -1,61 +1,70 @@
-<!-- Form for Connexion -->
+<!-- Form pour la Connexion -->
 <div *ngIf="isLogin; else signupForm">
   <h2>Se Connecter</h2>
 
+  <!-- Username -->
   <div class="form-group">
     <label for="username">Pseudo ou Email :</label>
     <input id="username" type="text" [(ngModel)]="username" placeholder="Entrez votre pseudo ou email" required>
   </div>
 
+  <!-- Password -->
   <div class="form-group">
     <label for="password">Mot de passe :</label>
     <input id="password" type="password" [(ngModel)]="password" placeholder="Entrez votre mot de passe" required>
   </div>
 
+  <!-- Connection -->
   <button type="button" (click)="login()">Se connecter</button>
 
+  <!-- Passage à l'inscription -->
   <p class="link">
     Vous n'avez pas de compte ? <a (click)="toggleForm()">S'inscrire</a>
   </p>
 
+  <!-- Impression des erreurs de connection (utilisateur inconnu, mauvais mot de passe,...) -->
   <div *ngIf="loginError" class="error-message">{{ loginError }}</div>
 </div>
 
 
-<!-- Form for Inscription -->
+<!-- Form pour l'Inscription -->
 <ng-template #signupForm>
   <h2>S'inscrire</h2>
 
+  <!-- Pseudo -->
   <div class="form-group">
     <label for="signupUsername">Pseudo :</label>
     <input id="signupUsername" type="text" [(ngModel)]="signupUsername" placeholder="Entrez votre pseudo" required>
   </div>
 
+  <!-- Email et confirmation -->
   <div class="form-group">
     <label for="signupEmail">Email :</label>
     <input id="signupEmail" type="email" [(ngModel)]="signupEmail" placeholder="Entrez votre email" required>
   </div>
-
   <div class="form-group">
     <label for="confirmEmail">Confirmer l'email :</label>
     <input id="confirmEmail" type="email" [(ngModel)]="confirmEmail" placeholder="Confirmer votre email" required>
   </div>
 
+  <!-- Mot de passe et confirmation -->
   <div class="form-group">
     <label for="signupPassword">Mot de passe :</label>
     <input id="signupPassword" type="password" [(ngModel)]="signupPassword" placeholder="Entrez votre mot de passe" required>
   </div>
-
   <div class="form-group">
     <label for="confirmPassword">Confirmer le mot de passe :</label>
     <input id="confirmPassword" type="password" [(ngModel)]="confirmPassword" placeholder="Confirmer votre mot de passe" required>
   </div>
 
+  <!-- Inscription -->
   <button type="button" (click)="register()">S'inscrire</button>
 
+  <!-- Passage à la connection -->
   <p class="link">
     Vous avez déjà un compte ? <a (click)="toggleForm()">Se connecter</a>
   </p>
 
+  <!-- Impression des erreurs d'inscription (emails ou mdp non identiques,...) -->
   <div *ngIf="signupError" class="error-message">{{ signupError }}</div>
 </ng-template>

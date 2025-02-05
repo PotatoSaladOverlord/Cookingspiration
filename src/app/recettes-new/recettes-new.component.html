@@ -2,9 +2,11 @@
   <div class="form-container">
     <h2>Ajouter une Recette</h2>
 
+    <!-- Nom -->
     <label for="name">Nom de la recette :</label>
     <input id="name" type="text" [(ngModel)]="name" placeholder="Nom de la recette" required>
 
+    <!-- Ingrédients rajoutés un à un -->
     <label>Ingrédients :</label>
     <div class="ingredients-container">
       <div *ngFor="let ingredient of ingredients; let i = index" class="ingredient-item">
@@ -12,28 +14,32 @@
         <button type="button" class="remove-btn" (click)="removeIngredient(i)">❌</button>
       </div>
     </div>
-
     <div class="ingredient-input">
       <input type="text" [(ngModel)]="newIngredient" placeholder="Ajouter un ingrédient">
       <button type="button" (click)="addIngredient()">➕</button>
     </div>
 
+    <!-- Difficulté /3-->
     <label for="difficulty">Difficulté :</label>
     <select id="difficulty" [(ngModel)]="difficulty">
       <option *ngFor="let d of [1,2,3,4,5]" [value]="d">{{ d }}</option>
     </select>
 
+    <!-- Prix /5-->
     <label for="price">Prix :</label>
     <select id="price" [(ngModel)]="price">
       <option *ngFor="let p of [1,2,3]" [value]="p">{{ p }}</option>
     </select>
 
+    <!-- Durée-->
     <label for="time">Temps de préparation :</label>
     <input id="time" type="text" [(ngModel)]="time" placeholder="Ex: 1h30m">
 
+    <!-- Étapes -->
     <label for="text">Étapes :</label>
     <textarea id="text" [(ngModel)]="text" placeholder="Décrivez les étapes de préparation"></textarea>
 
+    <!-- Envoyer -->
     <button type="button" (click)="submitRecipe()">Ajouter la recette</button>
   </div>
 </div>

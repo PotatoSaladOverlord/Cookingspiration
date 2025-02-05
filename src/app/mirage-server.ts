@@ -10,10 +10,20 @@ export function makeServer({ environment = 'development' } = {}) {
         },
 
         seeds(server) {
-            server.create('user', { id: '1', name: 'Admin', password: 'adminadmin', email: 'admin@cooking.com' });
-            server.create('user', { id: '2', name: 'Livia', password: 'livialivia', email: 'livia_cooking@example.com' });
 
+          // 2 utilisateurs pré-enregistrés
+          server.create('user', {
+            id: '1',
+            name: 'Admin',
+            password: 'adminadmin',
+            email: 'admin@cooking.com' });
+          server.create('user', {
+            id: '2',
+            name: 'Livia',
+            password: 'livialivia',
+            email: 'livia_cooking@example.com' });
 
+          // 20 recettes pré-enregistrées
           server.create('recipe', {
             id: '1',
             name: 'Boeuf Bourguignon',
@@ -23,7 +33,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '3h',
             text: '1. Coupez la viande en morceaux et farinez-les.\n2. Faites revenir les lardons et réservez.\n3. Faites dorer la viande dans la même cocotte.\n4. Ajoutez les oignons émincés et les carottes en rondelles.\n5. Remettez les lardons, ajoutez l’ail et le bouquet garni.\n6. Versez le vin rouge et laissez mijoter 2h30 à feu doux.\n7. Servez avec des pommes de terre vapeur.',
           });
-
           server.create('recipe', {
             id: '2',
             name: 'Escargots à la Bourguignonne',
@@ -33,7 +42,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '45m',
             text: '1. Hachez finement l’ail, l’échalote et le persil.\n2. Mélangez-les avec le beurre ramolli.\n3. Déposez un peu de beurre persillé dans chaque coquille d’escargot.\n4. Disposez les escargots dans un plat allant au four.\n5. Faites cuire 10 min à 200°C et servez chaud.',
           });
-
           server.create('recipe', {
             id: '3',
             name: 'Soufflé au Fromage',
@@ -43,7 +51,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '1h',
             text: '1. Préchauffez le four à 180°C.\n2. Faites fondre le beurre, ajoutez la farine et mélangez.\n3. Versez le lait en fouettant jusqu’à épaississement.\n4. Hors du feu, incorporez les jaunes d\'oeufs et le fromage râpé.\n5. Montez les blancs en neige et incorporez-les délicatement.\n6. Versez dans un moule beurré et enfournez 30 min.',
           });
-
           server.create('recipe', {
             id: '4',
             name: 'Coq au Vin',
@@ -53,7 +60,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '3h',
             text: '1. Faites dorer les morceaux de coq dans une cocotte avec l’huile.\n2. Ajoutez les lardons, les oignons et les carottes en rondelles.\n3. Saupoudrez de farine et mélangez.\n4. Versez le vin rouge et ajoutez l’ail et le bouquet garni.\n5. Laissez mijoter 2h30 à feu doux.\n6. Servez avec des pommes de terre vapeur.',
           });
-
           server.create('recipe', {
             id: '5',
             name: 'Canard à l’Orange',
@@ -63,7 +69,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '2h',
             text: '1. Préchauffez le four à 180°C.\n2. Salez et poivrez le canard, puis enfournez-le pour 1h30.\n3. Prélevez le zeste de 2 oranges et pressez leur jus.\n4. Faites caraméliser le sucre avec le vinaigre, puis ajoutez le jus d’orange et le fond de volaille.\n5. Laissez réduire à feu doux, puis incorporez le beurre.\n6. Servez le canard découpé avec la sauce et les zestes d’orange.',
           });
-
           server.create('recipe', {
             id: '6',
             name: 'Tournedos Rossini',
@@ -73,7 +78,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '45m',
             text: '1. Faites toaster le pain de mie et réservez.\n2. Poêlez les tournedos dans du beurre, 3 min par côté. Réservez.\n3. Dans la même poêle, faites dorer le foie gras 1 min par côté.\n4. Déglacez avec le Madère et ajoutez le fond de veau. Réduisez la sauce.\n5. Disposez chaque tournedos sur un toast, ajoutez le foie gras et nappez de sauce.',
           });
-
           server.create('recipe', {
             id: '7',
             name: 'Homard Thermidor',
@@ -83,7 +87,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '1h',
             text: '1. Faites cuire les homards dans l’eau bouillante 10 min.\n2. Coupez-les en deux et récupérez la chair.\n3. Mélangez la chair avec le beurre fondu, le vin blanc, la crème et les jaunes d’oeuf.\n4. Remplissez les carapaces avec la préparation.\n5. Saupoudrez de fromage et gratinez au four 10 min à 200°C.',
           });
-
           server.create('recipe', {
             id: '8',
             name: 'Cassoulet Toulousain',
@@ -93,7 +96,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '4h',
             text: '1. Faites tremper les haricots blancs dans l’eau froide une nuit.\n2. Égouttez-les et faites-les cuire 1h avec l’oignon, l’ail et le bouquet garni.\n3. Dans une cocotte, faites revenir la saucisse et la poitrine de porc coupée en morceaux.\n4. Ajoutez les haricots égouttés, le bouillon et les cuisses de canard.\n5. Laissez mijoter 3h à feu doux.\n6. Servez bien chaud.',
           });
-
           server.create('recipe', {
             id: '9',
             name: 'Quenelles de Brochet Sauce Nantua',
@@ -103,7 +105,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '2h',
             text: '1. Préparez une panade en chauffant le lait avec le beurre, puis incorporez la farine.\n2. Laissez refroidir, puis ajoutez les oeufs un à un en mélangeant bien.\n3. Incorporez la chair de brochet mixée et assaisonnez.\n4. Façonnez les quenelles et pochez-les dans de l’eau frémissante.\n5. Préparez la sauce en mélangeant la crème et le beurre d’écrevisse.\n6. Servez les quenelles nappées de sauce Nantua.',
           });
-
           server.create('recipe', {
             id: '10',
             name: 'Chateaubriand Sauce Béarnaise',
@@ -113,7 +114,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '45m',
             text: '1. Faites revenir l’échalote hachée avec le vinaigre et la moitié de l’estragon.\n2. Laissez réduire puis filtrez.\n3. Faites fondre le beurre et réservez.\n4. Fouettez les jaunes d’oeufs avec la réduction d’échalote au bain-marie.\n5. Incorporez progressivement le beurre fondu pour obtenir une sauce onctueuse.\n6. Ajoutez l’estragon ciselé.\n7. Saisissez les pavés de boeuf dans une poêle chaude avec du beurre.\n8. Servez avec la sauce Béarnaise.',
           });
-
           server.create('recipe', {
             id: '11',
             name: 'Gratin Dauphinois',
@@ -123,7 +123,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '1h30m',
             text: '1. Préchauffez le four à 160°C.\n2. Épluchez et coupez les pommes de terre en fines rondelles.\n3. Frottez un plat à gratin avec une gousse d’ail et beurrez-le.\n4. Disposez les rondelles de pommes de terre en couches successives.\n5. Faites chauffer le lait et la crème avec l’ail restant, le sel, le poivre et la muscade.\n6. Versez le mélange sur les pommes de terre.\n7. Enfournez pour 1h15 à 160°C.\n8. Servez bien chaud.',
           });
-
           server.create('recipe', {
             id: '12',
             name: 'Gigot d’Agneau de Sept Heures',
@@ -133,7 +132,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '7h30m',
             text: '1. Préchauffez le four à 120°C.\n2. Faites revenir le gigot dans une cocotte avec un peu d’huile d’olive.\n3. Ajoutez les oignons émincés, l’ail et les carottes en rondelles.\n4. Déglacez avec le vin blanc et ajoutez le bouillon et le bouquet garni.\n5. Couvrez et enfournez pour 7h en arrosant régulièrement.\n6. Servez la viande fondante avec sa sauce réduite.',
           });
-
           server.create('recipe', {
             id: '13',
             name: 'Pâté en Croûte',
@@ -143,7 +141,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '2h',
             text: '1. Mélangez les viandes avec l’échalote et l’ail hachés.\n2. Ajoutez l’oeuf battu, le cognac, le sel, le poivre et la muscade.\n3. Étalez la pâte brisée et garnissez un moule à pâté.\n4. Remplissez avec la farce et recouvrez de pâte.\n5. Faites une cheminée au centre et dorez au jaune d’oeuf.\n6. Enfournez 1h à 180°C.\n7. Laissez refroidir avant de servir.',
           });
-
           server.create('recipe', {
             id: '14',
             name: 'Sole Meunière',
@@ -153,7 +150,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '30m',
             text: '1. Farinez légèrement les soles.\n2. Faites chauffer la moitié du beurre dans une poêle.\n3. Faites cuire les soles 3 min de chaque côté.\n4. Ajoutez le reste du beurre pour obtenir un beurre noisette.\n5. Arrosez de jus de citron et parsemez de persil haché.\n6. Servez immédiatement.',
           });
-
           server.create('recipe', {
             id: '15',
             name: 'Tarte Tatin',
@@ -163,7 +159,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '1h',
             text: '1. Préchauffez le four à 180°C.\n2. Faites un caramel avec le sucre et le beurre dans un moule à tarte.\n3. Épluchez et coupez les pommes en quartiers.\n4. Disposez-les dans le moule sur le caramel.\n5. Recouvrez avec la pâte brisée et enfournez 40 min.\n6. Démoulez encore chaud et servez tiède.',
           });
-
           server.create('recipe', {
             id: '16',
             name: 'Ratatouille',
@@ -173,7 +168,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '1h',
             text: '1. Coupez les aubergines, courgettes et poivrons en dés.\n2. Faites revenir chaque légume séparément dans de l’huile d’olive.\n3. Dans une grande sauteuse, faites revenir l’oignon et l’ail haché.\n4. Ajoutez les tomates pelées et coupées en morceaux.\n5. Remettez tous les légumes avec le thym et le laurier.\n6. Salez, poivrez et laissez mijoter à feu doux 40 min.\n7. Servez chaud ou froid en accompagnement.',
           });
-
           server.create('recipe', {
             id: '17',
             name: 'Quiche Lorraine',
@@ -183,7 +177,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '50m',
             text: '1. Préchauffez le four à 180°C.\n2. Faites revenir les lardons à la poêle sans matière grasse.\n3. Battez les oeufs avec la crème, le sel, le poivre et la muscade.\n4. Étalez la pâte dans un moule et piquez le fond avec une fourchette.\n5. Disposez les lardons et versez l’appareil à quiche.\n6. Saupoudrez de fromage râpé et enfournez 40 min.\n7. Servez chaud ou tiède avec une salade verte.',
           });
-
           server.create('recipe', {
             id: '18',
             name: 'Blanquette de Veau',
@@ -193,7 +186,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '2h30m',
             text: '1. Coupez la viande en morceaux et faites-la blanchir dans l’eau bouillante 5 min.\n2. Égouttez et placez dans une cocotte avec les carottes, l’oignon et l’ail.\n3. Ajoutez le bouillon chaud et le bouquet garni. Faites mijoter 2h.\n4. Dans une casserole, mélangez beurre et farine pour faire un roux.\n5. Ajoutez une louche de bouillon de cuisson et faites épaissir.\n6. Hors du feu, ajoutez la crème et les jaunes d’oeuf.\n7. Mélangez avec la viande et servez avec du riz blanc.',
           });
-
           server.create('recipe', {
             id: '19',
             name: 'Soupe à l’Oignon Gratinée',
@@ -203,7 +195,6 @@ export function makeServer({ environment = 'development' } = {}) {
             time: '1h',
             text: '1. Émincez les oignons et faites-les revenir dans le beurre.\n2. Faites-les caraméliser doucement pendant 20 min.\n3. Déglacez avec le vin blanc et ajoutez le bouillon.\n4. Laissez mijoter 30 min à feu doux.\n5. Faites griller des tranches de baguette.\n6. Versez la soupe dans des bols, ajoutez les tranches de pain et le fromage râpé.\n7. Enfournez à 200°C jusqu’à ce que le fromage soit gratiné.',
           });
-
           server.create('recipe', {
             id: '20',
             name: 'Île Flottante',
@@ -219,8 +210,17 @@ export function makeServer({ environment = 'development' } = {}) {
         routes() {
             this.namespace = 'api'; // Toutes les requêtes passeront par /api
 
+           // routes users
             this.get('/users', (schema) => {
                 return schema.all('user');
+            });
+
+            this.get('/users/:name', (schema, request) => {
+              let name = request.params['name'];
+              let users = schema.all('user').models; // Get all user models
+
+              let user = users.find((user) => (user as any).attrs.name === name); // Cast to any to access attrs
+              return user ? user : new Response('404');
             });
 
             this.post('/users', (schema, request) => {
@@ -228,35 +228,20 @@ export function makeServer({ environment = 'development' } = {}) {
                 return schema.create('user', attrs);
             });
 
+            // routes recettes
             this.get('/recipes', (schema) => {
               return schema.all('recipe');
+            });
+
+            this.get('/recipes/:id', (schema, request) => {
+              let id = request.params['id'];
+              return schema.find('recipe', id);  // Find recipe by ID
             });
 
             this.post('/recipes', (schema, request) => {
               const attrs = JSON.parse(request.requestBody);
               return schema.create('recipe', attrs);
             });
-
-          this.get('/recipes/:id', (schema, request) => {
-            let id = request.params['id'];
-            return schema.find('recipe', id);  // Find recipe by ID
-          });
-
-          this.get('/users/:name', (schema, request) => {
-            let name = request.params['name'];
-            let users = schema.all('user').models; // Get all user models
-
-            let user = users.find((user) => (user as any).attrs.name === name); // Cast to any to access attrs
-            return user ? user : new Response('404');
-          });
-
-          this.get('/users/email/:email', (schema, request) => {
-            let email = request.params['email'];
-            let users = schema.all('user').models;
-
-            let user = users.find((user) => (user as any).attrs.email === email);
-            return user ? user : new Response('404');
-          });
 
         },
     });

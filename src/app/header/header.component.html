@@ -1,23 +1,33 @@
 <div class="header">
+
+  <!-- Logo du site -->
   <div class="logo">
     <img ngSrc="assets/logo.png" alt="Cookingspiration Logo" height="859" width="870">
   </div>
+
+  <!-- Titre -->
   <a routerLink="/recettes-toutes" class="title">Cookingspiration</a>
+
+  <!-- Profil utilisateur -->
   <div class="connection-inscription">
+
+    <!-- Dans tous les cas il y a l'image -->
     <img ngSrc="assets/se_connecter.png" alt="Profil" height="40" width="40">
 
+    <!-- Si on est connecté, on peut se déconnecter -->
     <ng-container *ngIf="userName; else loginLink">
       <p class="username">{{ userName }}</p>
       <a class="nav-link" (click)="logout()">Déconnexion</a>
     </ng-container>
 
+    <!-- Si on est déconnecté, on peut se connecter -->
     <ng-template #loginLink>
       <a class="nav-link" routerLink="/connexion-inscription">Inscription / Connexion</a>
     </ng-template>
   </div>
 </div>
 
-<!-- Navigation Section -->
+<!-- Routes -->
 <nav class="subnav">
   <a routerLink="/recettes-toutes" routerLinkActive="active-link" class="subnav-link">Toutes les recettes</a>
   <a routerLink="/recettes-par-nom" routerLinkActive="active-link" class="subnav-link">Rechercher par nom</a>

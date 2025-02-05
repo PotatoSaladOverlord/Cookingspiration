@@ -1,4 +1,6 @@
 <div *ngIf="randomRecipe" class="recipe-card">
+
+  <!-- Affichage complet de la recette -->
   <h3>{{ randomRecipe.name }}</h3>
   <p><strong>Ingrédients :</strong> {{ randomRecipe.ingredients.join(', ') }}</p>
   <p><strong>Temps :</strong> {{ randomRecipe.time }} min</p>
@@ -6,5 +8,6 @@
   <p><strong>Prix :</strong> {{ randomRecipe.price }} / 3</p>
   <p><strong>Étapes :</strong> {{ randomRecipe.text }}</p>
 
+  <!-- Bouton pour nouvelle recette aléatoire -->
   <button (click)="getRandomRecipe()">Nouvelle Recette Aléatoire</button>
 </div>
