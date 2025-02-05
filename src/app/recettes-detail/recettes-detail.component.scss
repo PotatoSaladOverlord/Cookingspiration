@@ -1,8 +1,8 @@
 .recipe-card {
   background-color: #FAF3E0; /* Soft Cream */
   border: 2px solid #F4A259; /* Golden Honey */
-  padding: 20px;
-  margin: 20px auto;
+  padding: 30px; /* Increased padding for more spacing */
+  margin: 30px auto; /* Increased margin for more spacing */
   width: 60%;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -12,18 +12,26 @@
 .recipe-card h3 {
   color: #722F37; /* Deep Plum */
   font-size: 2rem; /* Larger title */
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Increased bottom margin */
+  text-align: center; /* Center the title */
 }
 
 .recipe-card p {
   font-size: 1.3rem; /* Larger text */
   color: #333;
-  margin: 5px 0;
+  margin: 10px 0; /* Increased margin for more spacing */
 }
 
 .recipe-text {
   white-space: pre-line; /* Ensures that '\n' is converted into line breaks */
-  font-size: 1.2rem; /* Slightly larger for the steps */
+  font-size: 1.3rem; /* Same size as ingredients, slightly bigger */
+  color: #333; /* Black color for the steps */
+  margin-top: 15px; /* Increased top margin for spacing between sections */
 }
 
-
+.recipe-card .recipe-text h3 {
+  font-size: 1.3rem; /* Same size as ingredients */
+  color: #333; /* Keep the text black */
+  margin: 10px 0; /* Adjusted margin */
+  text-align: left; /* Left-aligned "Étapes" */
+}

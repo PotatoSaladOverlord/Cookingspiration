@@ -1,9 +1,8 @@
 <div *ngIf="recipe" class="recipe-card">
   <h3>{{ recipe.name }}</h3>
-  <p><strong>Ingrédients:</strong> {{ recipe.ingredients?.join(', ') }}</p>
-  <p><strong>Temps:</strong> {{ recipe.time }} min</p>
-  <p><strong>Difficulté:</strong> {{ recipe.difficulty }} / 5</p>
-  <p><strong>Prix:</strong> {{ recipe.price }} / 3</p>
-  <h3>Étapes:</h3>
-  <p class="recipe-text">{{ recipe.text }}</p>
+  <p><strong>Ingrédients : </strong> {{ recipe.ingredients?.join(', ') }}</p>
+  <p><strong>Temps : </strong> {{ recipe.time }} min</p>
+  <p><strong>Difficulté : </strong> {{ recipe.difficulty }} / 5</p>
+  <p><strong>Prix : </strong> {{ recipe.price }} / 3</p>
+  <p><strong>Étapes : </strong> <p class="recipe-text">{{ recipe.text }}</p>
 </div>
