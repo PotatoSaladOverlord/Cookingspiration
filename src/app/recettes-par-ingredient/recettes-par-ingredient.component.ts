@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceCoursService } from '../service/service-cours.service';
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 
 @Component({
@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   imports: [
     FormsModule,
     NgForOf,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './recettes-par-ingredient.component.html',
   styleUrl: './recettes-par-ingredient.component.scss'

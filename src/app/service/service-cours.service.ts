@@ -31,19 +31,25 @@ export class ServiceCoursService {
     return this.http.post(this.apiUrlRecipes, recipe);
   }
 
-  // Check user login (pseudo or email, password)
-  checkUserLogin(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/users/login`, { username, password });
-  }
-
-  // Register new user
-  registerUser(user: { username: string, email: string, password: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrlUsers}/register`, user);
+  addUser(user: any): Observable<any> {
+    return this.http.post(this.apiUrlUsers, user);
   }
 
   public getRecipeById(id: string): Observable<any> {
     return this.http.get<{ recipe: any }>(`/api/recipes/${id}`).pipe(
       map(response => response.recipe)
+    );
+  }
+
+  public getUserByName(name: string): Observable<any> {
+    return this.http.get<{ user: any }>(`/api/users/${name}`).pipe(
+      map(response => response.user)
+    );
+  }
+
+  public getUserByEmail(email: string): Observable<any> {
+    return this.http.get<{ user: any }>(`/api/users/email/${email}`).pipe(
+      map(response => response.user)
     );
   }
 

@@ -26,10 +26,7 @@ export class RecettesDetailComponent implements OnInit{
     const recipeId = this.route.snapshot.paramMap.get('id');
     if (recipeId) {
       this.service.getRecipeById(recipeId).subscribe((data: any) => {
-        console.log(data);  // Log the fetched data
         this.recipe = data;
-      }, error => {
-        console.error('Error fetching recipe:', error);  // Log errors
       });
     }
   }

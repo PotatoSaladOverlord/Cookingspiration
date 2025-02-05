@@ -241,6 +241,23 @@ export function makeServer({ environment = 'development' } = {}) {
             let id = request.params['id'];
             return schema.find('recipe', id);  // Find recipe by ID
           });
+
+          this.get('/users/:name', (schema, request) => {
+            let name = request.params['name'];
+            let users = schema.all('user').models; // Get all user models
+
+            let user = users.find((user) => (user as any).attrs.name === name); // Cast to any to access attrs
+            return user ? user : new Response('404');
+          });
+
+          this.get('/users/email/:email', (schema, request) => {
+            let email = request.params['email'];
+            let users = schema.all('user').models;
+
+            let user = users.find((user) => (user as any).attrs.email === email);
+            return user ? user : new Response('404');
+          });
+
         },
     });
 

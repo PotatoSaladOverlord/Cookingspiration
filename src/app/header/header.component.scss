@@ -70,3 +70,25 @@
 .active-link {
   color: #F4A259; /* Golden Honey */
 }
+
+.user-name {
+  font-weight: bold;
+  color: #722F37; /* Deep Plum */
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.logout-button {
+  background-color: #F4A259; /* Golden Honey */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #D98443; /* Darker Honey */
+}

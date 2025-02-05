@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {ServiceCoursService} from "../service/service-cours.service";
 import {Router} from "@angular/router";
 
@@ -9,7 +9,8 @@ import {Router} from "@angular/router";
   standalone: true,
   imports: [
     FormsModule,
-    NgIf
+    NgIf,
+    NgForOf
   ],
   templateUrl: './connexion-inscription.component.html',
   styleUrl: './connexion-inscription.component.scss'
@@ -20,6 +21,8 @@ export class ConnexionInscriptionComponent {
   public username: string = '';
   public password: string = '';
   public loginError: string = '';
+  private user: any;
+  public users : any;
 
   // Inscription fields
   public signupUsername: string = '';
@@ -44,44 +47,32 @@ export class ConnexionInscriptionComponent {
       return;
     }
 
-
-    // Call getUsers() to fetch all users
-    this.service.getUsers().subscribe(
-      (users) => {
-        // Find the user in the list
-        const user = users.find((u: { username: string; email: string; }) => u.username === this.username || u.email === this.username);
-
-        if (!user) {
-          // User not found
-          this.loginError = "Cet utilisateur n'existe pas, veuillez vous inscrire";
-        } else if (user.password !== this.password) {
-          // Incorrect password
-          this.loginError = "Le mot de passe est incorrect.";
-        } else {
-          // All good, navigate to all recipes
-          this.router.navigate(['/recettes-toutes']);
-        }
-      },
-      (error) => {
-        // Handle any error during the users fetching process
-        this.loginError = "Erreur de connexion.";
+    this.service.getUserByName(this.username).subscribe((data: any) => {
+      if (data) {
+        this.user = data;
+        this.checkPassword(); // Check the password inside the callback
+      } else {
+        this.service.getUserByEmail(this.username).subscribe((data: any) => {
+          if (data) {
+            this.user = data;
+            this.checkPassword(); // Check the password inside the callback
+          } else {
+            this.loginError = "Utilisateur inconnu, veuillez vous inscrire.";
+          }
+        });
       }
-    );
+    });
+  }
 
-    this.service.checkUserLogin(this.username, this.password).subscribe(
-      (response: any) => {
-        if (response.success) {
-          this.router.navigate(['/recettes-toutes']);
-        } else if (response.error === 'User not found') {
-          this.loginError = "L'utilisateur n'existe pas.";
-        } else if (response.error === 'Incorrect password') {
-          this.loginError = "Le mot de passe est incorrect.";
-        }
-      },
-      (error) => {
-        this.loginError = "Erreur de connexion.";
-      }
-    );
+  checkPassword() {
+    if (this.user.password === this.password) {
+      localStorage.setItem('userName', JSON.stringify(this.user.name)); // Persist login state
+      this.router.navigate(['/recettes-toutes']).then(() => {
+        window.location.reload();
+      });
+    } else {
+      this.loginError = "Mot de passe incorrect.";
+    }
   }
 
   // Handle registration logic
@@ -106,22 +97,16 @@ export class ConnexionInscriptionComponent {
       return;
     }
 
-    this.service.registerUser({
-      username: this.signupUsername,
+    const newUser = {
+      name: this.signupUsername,
       email: this.signupEmail,
-      password: this.signupPassword
-    }).subscribe(
-      (response: any) => {
-        if (response.success) {
-          this.router.navigate(['/recettes-toutes']);
-        } else {
-          this.signupError = "Erreur lors de l'inscription.";
-        }
-      },
-      (error) => {
-        this.signupError = "Erreur lors de l'inscription.";
-      }
-    );
+      password: this.signupPassword,
+    };
+
+    this.service.addUser(newUser).subscribe(() => {
+      this.router.navigate(['/connexion-inscription']); // Redirection après ajout
+    });
+
   }
 
 }

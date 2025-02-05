@@ -4,8 +4,16 @@
   </div>
   <a routerLink="/recettes-toutes" class="title">Cookingspiration</a>
   <div class="connection-inscription">
-    <img ngSrc="assets/se_connecter.png" alt="S'inscrire/Se connecter" height="40" width="40">
-    <a class="nav-link" routerLink="/connexion-inscription">Inscription / Connexion</a>
+    <img ngSrc="assets/se_connecter.png" alt="Profil" height="40" width="40">
+
+    <ng-container *ngIf="userName; else loginLink">
+      <p class="username">{{ userName }}</p>
+      <a class="nav-link" (click)="logout()">Déconnexion</a>
+    </ng-container>
+
+    <ng-template #loginLink>
+      <a class="nav-link" routerLink="/connexion-inscription">Inscription / Connexion</a>
+    </ng-template>
   </div>
 </div>
 
