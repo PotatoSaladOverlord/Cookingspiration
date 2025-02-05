@@ -15,6 +15,6 @@ export const routes: Routes = [
     { path: "recettes-random", component: RecettesRandomComponent},
     { path: 'recettes-detail/:id', component: RecettesDetailComponent},
     { path: "recettes-new", component: RecettesNewComponent},
-    { path: '', redirectTo: 'route', pathMatch: 'full'}, // redirige vers l'url app les url vide
-    { path: '**', component: RecettesToutesComponent} // redirige vers RouteComponent les url qui ne sont pas définis ici
+    { path: '', redirectTo: 'route', pathMatch: 'full'},
+    { path: '**', component: RecettesToutesComponent}
 ];
