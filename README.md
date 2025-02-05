@@ -12,10 +12,6 @@ Cookingspiration est une plateforme de partage de recettes où les utilisateurs 
 - **Inscription des utilisateurs** : Les utilisateurs peuvent s'inscrire sur la platerforme, leur compte est alors enregistré et ils peuvent se connecter.
 - **Connection des utilisateurs** : Les utilisateurs peuvent se connecter à la platerforme, celà est necessaire pour accéder à la fonction d'ajout de recette.
 
-## Prérequis
-
-- Node.js (version 16.x ou supérieure)
-- Angular (version 15.x ou supérieure)
 
 ## Installation
 
